@@ -37,7 +37,7 @@ public class UIText : MonoBehaviour
          UserBase user = userData.UserInfo[index-1];
          UserName.text = user.userName + "\n";
          cash.text = user.cash.ToString("N0") + "\n";
-         balance.text = user.balance.ToString("N0") + "\n";
+         balance.text = "Balance : "+user.balance.ToString("N0") + "\n";
       }
    }
 }
