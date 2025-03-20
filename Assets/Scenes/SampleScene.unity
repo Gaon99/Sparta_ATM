@@ -611,32 +611,20 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 32
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 301125494}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1043,7 +1031,6 @@ GameObject:
   - component: {fileID: 301125498}
   - component: {fileID: 301125497}
   - component: {fileID: 301125496}
-  - component: {fileID: 301125499}
   m_Layer: 0
   m_Name: EnterBtn
   m_TagString: Untagged
@@ -1115,9 +1102,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 301125499}
-        m_TargetAssemblyTypeName: _Button, Assembly-CSharp
-        m_MethodName: OnButtonClicked
+      - m_Target: {fileID: 746747002}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnConfirmButtonClickAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1165,18 +1152,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301125494}
   m_CullTransparentMesh: 1
---- !u!114 &301125499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301125494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b20de785a804651ab9a75506064849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &343065276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,7 +1845,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524372610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5e-15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1878,8 +1853,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0001373291, y: 0}
+  m_SizeDelta: {x: -0.000061035, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524372612
 MonoBehaviour:
@@ -1921,10 +1896,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: " \uAE08\uC561\uC744 \uC785\uB825\uD558\uC138\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 24c8f863f04274fcf9f27a13a2a8a0ce, type: 2}
+  m_sharedMaterial: {fileID: 951081247595729821, guid: 24c8f863f04274fcf9f27a13a2a8a0ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1948,8 +1923,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2047,7 +2022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2b79637160046a1800e32c0d3d8fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
   UserName: {fileID: 1642397668}
   cash: {fileID: 1464050931}
   balance: {fileID: 343065279}
@@ -2154,7 +2128,6 @@ GameObject:
   - component: {fileID: 613040178}
   - component: {fileID: 613040180}
   - component: {fileID: 613040179}
-  - component: {fileID: 613040181}
   m_Layer: 0
   m_Name: Deposit/WithdrawlUI
   m_TagString: Untagged
@@ -2221,24 +2194,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613040177}
   m_CullTransparentMesh: 1
---- !u!114 &613040181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613040177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d57f49aea5940968f3090d894a1a61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 148583052}
-  button1: {fileID: 1580211843}
-  button2: {fileID: 355425041}
-  button3: {fileID: 1127154444}
-  EnterBtn: {fileID: 0}
-  Header: {fileID: 427553195}
 --- !u!1 &746747001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2226,8 @@ MonoBehaviour:
   selectPanel: {fileID: 1924603415}
   atmPanel: {fileID: 613040177}
   header: {fileID: 427553195}
+  inputField: {fileID: 148583052}
+  userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
 --- !u!4 &746747003
 Transform:
   m_ObjectHideFlags: 0
@@ -2611,7 +2568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Enter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2718,7 +2675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
-  index: 1
+  index: 0
 --- !u!4 &1108642677
 Transform:
   m_ObjectHideFlags: 0
@@ -3530,6 +3487,7 @@ MonoBehaviour:
   - {fileID: 1580211843}
   - {fileID: 355425041}
   - {fileID: 1127154444}
+  - {fileID: 301125496}
 --- !u!4 &1652125722
 Transform:
   m_ObjectHideFlags: 0

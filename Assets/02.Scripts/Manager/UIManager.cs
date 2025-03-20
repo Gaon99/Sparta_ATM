@@ -10,22 +10,24 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private UserData userData;
 
+    private ButtonManager BM;
     private bool isDeposit = false;
     protected int currentuserIndex = 0;
     private GameManager GM;
     private void Start()
     {
+        BM = ButtonManager.instance;
         GM = GameManager.instance;
         atmPanel.SetActive(false);
-        ButtonManager.instance.SetButtonAction(0, OnDepositButtonClickAction);
-        ButtonManager.instance.SetButtonAction(1, OnWithdrawButtonClickAction);
-        ButtonManager.instance.SetButtonAction(2, OnGobackAction);
+        BM.SetButtonAction(0, OnDepositButtonClickAction);
+        BM.SetButtonAction(1, OnWithdrawButtonClickAction);
+        BM.SetButtonAction(2, OnGobackAction);
         
-        ButtonManager.instance.SetButtonAction(3, () => OnMoneyButtonClickAction(10000));
-        ButtonManager.instance.SetButtonAction(4, () => OnMoneyButtonClickAction(30000));
-        ButtonManager.instance.SetButtonAction(5, () => OnMoneyButtonClickAction(50000));
+        BM.SetButtonAction(3, () => OnMoneyButtonClickAction(10000));
+        BM.SetButtonAction(4, () => OnMoneyButtonClickAction(30000));
+        BM.SetButtonAction(5, () => OnMoneyButtonClickAction(50000));
         
-        ButtonManager.instance.SetButtonAction(6, OnConfirmButtonClickAction);
+        BM.SetButtonAction(6, OnConfirmButtonClickAction);
 
         //ButtonManager.instance.SetButtonAction(3, () => OnMoneyButtonClickAction(10000, "USER01", TransactionType.Deposit));
     }
@@ -80,9 +82,6 @@ public class UIManager : Singleton<UIManager>
                 }
             }
             else
-            {
-                
-            }
             {
                 if (GM.usersData.balance >= money)
                 {
