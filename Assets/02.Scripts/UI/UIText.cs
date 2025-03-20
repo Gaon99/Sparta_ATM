@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class UIText : MonoBehaviour
 {
-   [SerializeField] private UserData userData;
+   //[SerializeField] private UserData userData;
    [SerializeField] private TextMeshProUGUI UserName;
    [SerializeField] private TextMeshProUGUI cash;
    [SerializeField] private TextMeshProUGUI balance;
@@ -16,34 +16,31 @@ public class UIText : MonoBehaviour
    private string balanceValues;
 
    private GameManager GM;
+
    private void Start()
    {
       GM = GameManager.instance;
-      SetInitText();
-      UpdateUI(GM.index);
+      //SetInitText();
+      UpdateUI();
    }
 
    private void Update()
    {
-      UpdateUI(GM.index);
+      UpdateUI();
    }
 
-   private void SetInitText()
-   {
-      userNames = String.Empty;
-      cashValues = String.Empty;
-      balanceValues = String.Empty;
-   }
+// private void SetInitText()
+// {
+//    userNames = String.Empty;
+//    cashValues = String.Empty;
+//    balanceValues = String.Empty;
+// }
 
-   private void UpdateUI(int index)
+   private void UpdateUI()
    {
-      if (index >= 0 && index < userData.UserInfo.Count)    
-      {
-         UserBase user = userData.UserInfo[index];
-         UserName.text = user.userName + "\n";
-         cash.text = user.cash.ToString("N0") + "\n";
-         balance.text = "Balance : "+user.balance.ToString("N0") + "\n";
-      }
+      UserName.text = GM.usersData.userName + "\n";
+      cash.text = GM.usersData.money.ToString("N0") + "\n";
+      balance.text = "Balance : " + GM.usersData.balance.ToString("N0") + "\n";
    }
 }
 

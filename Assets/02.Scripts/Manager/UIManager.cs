@@ -12,9 +12,10 @@ public class UIManager : Singleton<UIManager>
 
     private bool isDeposit = false;
     protected int currentuserIndex = 0;
-    
+    private GameManager GM;
     private void Start()
     {
+        GM = GameManager.instance;
         atmPanel.SetActive(false);
         ButtonManager.instance.SetButtonAction(0, OnDepositButtonClickAction);
         ButtonManager.instance.SetButtonAction(1, OnWithdrawButtonClickAction);
@@ -72,18 +73,21 @@ public class UIManager : Singleton<UIManager>
 
             if (isDeposit)
             {
-                if (user.cash >= money)
+                if (GM.usersData.money >= money)
                 {
-                    user.cash -= money;
-                    user.balance += money;
+                    GM.usersData.money -= money;
+                    GM.usersData.balance += money;
                 }
             }
             else
             {
-                if (user.balance >= money)
+                
+            }
+            {
+                if (GM.usersData.balance >= money)
                 {
-                    user.cash += money;
-                    user.balance -= money;
+                    GM.usersData.money += money;
+                    GM.usersData.balance -= money;
                 }
             }
         }
