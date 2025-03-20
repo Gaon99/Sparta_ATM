@@ -1177,7 +1177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b20de785a804651ab9a75506064849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!1 &343065276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1413,6 @@ GameObject:
   - component: {fileID: 355425043}
   - component: {fileID: 355425042}
   - component: {fileID: 355425041}
-  - component: {fileID: 355425044}
   m_Layer: 0
   m_Name: 30000
   m_TagString: Untagged
@@ -1486,14 +1484,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 355425044}
-        m_TargetAssemblyTypeName: _Button, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 746747002}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnMoneyButtonClickAction
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 30000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1536,19 +1534,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355425039}
   m_CullTransparentMesh: 1
---- !u!114 &355425044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355425039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b20de785a804651ab9a75506064849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!1 &423289870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,7 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2b79637160046a1800e32c0d3d8fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userData: {fileID: 11400000, guid: 41c335d107b50478393c47be21127ce1, type: 2}
+  userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
   UserName: {fileID: 1642397668}
   cash: {fileID: 1464050931}
   balance: {fileID: 343065279}
@@ -2171,7 +2156,7 @@ GameObject:
   - component: {fileID: 613040179}
   - component: {fileID: 613040181}
   m_Layer: 0
-  m_Name: Deposit/WithdrawalUI
+  m_Name: Deposit/WithdrawlUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2732,7 +2717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54638f92759224f5697651016d6879d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userData: {fileID: 11400000, guid: 41c335d107b50478393c47be21127ce1, type: 2}
+  userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
   index: 1
 --- !u!4 &1108642677
 Transform:
@@ -2761,7 +2746,6 @@ GameObject:
   - component: {fileID: 1127154446}
   - component: {fileID: 1127154445}
   - component: {fileID: 1127154444}
-  - component: {fileID: 1127154447}
   m_Layer: 0
   m_Name: 50000
   m_TagString: Untagged
@@ -2833,14 +2817,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127154447}
-        m_TargetAssemblyTypeName: _Button, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 746747002}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnMoneyButtonClickAction
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 50000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2883,19 +2867,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127154442}
   m_CullTransparentMesh: 1
---- !u!114 &1127154447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127154442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b20de785a804651ab9a75506064849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!1 &1420947301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +3224,6 @@ GameObject:
   - component: {fileID: 1580211845}
   - component: {fileID: 1580211844}
   - component: {fileID: 1580211843}
-  - component: {fileID: 1580211846}
   m_Layer: 0
   m_Name: 10000
   m_TagString: Untagged
@@ -3325,14 +3295,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1580211846}
-        m_TargetAssemblyTypeName: _Button, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 746747002}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnMoneyButtonClickAction
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3375,19 +3345,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580211841}
   m_CullTransparentMesh: 1
---- !u!114 &1580211846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580211841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b20de785a804651ab9a75506064849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!1 &1642397665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3527,9 @@ MonoBehaviour:
   - {fileID: 47391574}
   - {fileID: 1757651985}
   - {fileID: 139798379}
+  - {fileID: 1580211843}
+  - {fileID: 355425041}
+  - {fileID: 1127154444}
 --- !u!4 &1652125722
 Transform:
   m_ObjectHideFlags: 0

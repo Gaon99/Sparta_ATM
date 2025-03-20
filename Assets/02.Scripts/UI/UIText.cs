@@ -23,6 +23,11 @@ public class UIText : MonoBehaviour
       UpdateUI(GM.index);
    }
 
+   private void Update()
+   {
+      UpdateUI(GM.index);
+   }
+
    private void SetInitText()
    {
       userNames = String.Empty;
@@ -32,9 +37,9 @@ public class UIText : MonoBehaviour
 
    private void UpdateUI(int index)
    {
-      if (index != 0)
+      if (index >= 0 && index < userData.UserInfo.Count)    
       {
-         UserBase user = userData.UserInfo[index-1];
+         UserBase user = userData.UserInfo[index];
          UserName.text = user.userName + "\n";
          cash.text = user.cash.ToString("N0") + "\n";
          balance.text = "Balance : "+user.balance.ToString("N0") + "\n";

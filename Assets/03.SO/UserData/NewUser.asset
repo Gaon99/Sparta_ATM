@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4d084adf2321401a919ead65ac1cb92, type: 3}
-  m_Name: UserData
+  m_Name: NewUser
   m_EditorClassIdentifier: 
   userInfo:
   - userName: "\uAE40\uC0C1\uD604"
-    cash: 52000
-    balance: 100000
+    userId: asdf12
+    cash: 520000
+    balance: 1140000
   - userName: "\uB974\uD0C4\uC774"
-    cash: 170000
+    userId: rtan300
+    cash: 158000
     balance: 3000000
