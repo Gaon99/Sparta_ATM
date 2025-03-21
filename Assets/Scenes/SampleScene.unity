@@ -1458,19 +1458,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 355425042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 746747002}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnMoneyButtonClickAction
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 30000
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &355425042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,7 +1970,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 525994029}
-  - component: {fileID: 525994030}
   m_Layer: 0
   m_Name: PopupBank
   m_TagString: Untagged
@@ -2010,21 +1997,6 @@ Transform:
   - {fileID: 1512291379}
   m_Father: {fileID: 2003486493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &525994030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525994028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2b79637160046a1800e32c0d3d8fe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UserName: {fileID: 1642397668}
-  cash: {fileID: 1464050931}
-  balance: {fileID: 343065279}
 --- !u!1 &602795592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746747003}
   - component: {fileID: 746747002}
+  - component: {fileID: 746747004}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2228,6 +2201,7 @@ MonoBehaviour:
   header: {fileID: 427553195}
   inputField: {fileID: 148583052}
   userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
+  uiText: {fileID: 746747004}
 --- !u!4 &746747003
 Transform:
   m_ObjectHideFlags: 0
@@ -2243,6 +2217,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &746747004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746747001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2b79637160046a1800e32c0d3d8fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userNametxt: {fileID: 1642397668}
+  cashtxt: {fileID: 1464050931}
+  balancetxt: {fileID: 343065279}
 --- !u!1 &801523465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,8 +2663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54638f92759224f5697651016d6879d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userData: {fileID: 11400000, guid: 3dce8ddc4871442ecaa22e10b7e54f80, type: 2}
-  index: 0
+  usersData:
+    userName: 
+    money: 0
+    balance: 0
 --- !u!4 &1108642677
 Transform:
   m_ObjectHideFlags: 0
@@ -2773,19 +2764,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1127154445}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 746747002}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnMoneyButtonClickAction
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 50000
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1127154445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,19 +3230,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580211844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 746747002}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnMoneyButtonClickAction
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10000
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1580211844
 MonoBehaviour:
   m_ObjectHideFlags: 0

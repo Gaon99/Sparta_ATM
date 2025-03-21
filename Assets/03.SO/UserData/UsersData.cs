@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 [System.Serializable]
-
-public class UsersData : MonoBehaviour
+public class UsersData
 {
    public string userName;
    public int money;
    public int balance;
+
+   public UsersData()
+   {
+   }
 
    public UsersData(string userName, int money, int balance)
    {

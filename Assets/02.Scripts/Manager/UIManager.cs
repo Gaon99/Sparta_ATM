@@ -14,6 +14,8 @@ public class UIManager : Singleton<UIManager>
     private bool isDeposit = false;
     protected int currentuserIndex = 0;
     private GameManager GM;
+    [SerializeField]private UIText uiText;
+
     private void Start()
     {
         BM = ButtonManager.instance;
@@ -29,9 +31,10 @@ public class UIManager : Singleton<UIManager>
         
         BM.SetButtonAction(6, OnConfirmButtonClickAction);
 
+        uiText.UpdateUI();
         //ButtonManager.instance.SetButtonAction(3, () => OnMoneyButtonClickAction(10000, "USER01", TransactionType.Deposit));
     }
-
+    
     public void OnConfirmButtonClickAction()
     {
         if (int.TryParse(inputField.text, out int amount))
@@ -71,7 +74,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (currentuserIndex >= 0 && currentuserIndex < userData.UserInfo.Count)
         {
-            var user = userData.UserInfo[GameManager.instance.index];
+            //var user = userData.UserInfo[GameManager.instance.index];
 
             if (isDeposit)
             {
@@ -79,6 +82,7 @@ public class UIManager : Singleton<UIManager>
                 {
                     GM.usersData.money -= money;
                     GM.usersData.balance += money;
+                    GM.SaveUserData(GM.usersData);
                 }
             }
             else
@@ -87,8 +91,10 @@ public class UIManager : Singleton<UIManager>
                 {
                     GM.usersData.money += money;
                     GM.usersData.balance -= money;
+                    GM.SaveUserData(GM.usersData);
                 }
             }
+            uiText.UpdateUI();
         }
     }
 }
