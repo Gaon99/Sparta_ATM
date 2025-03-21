@@ -6,8 +6,13 @@ public class UsersData
    public int balance;
 
    public UsersData()
-   {
-   }
+   
+      {
+         userName = "DefaultUser";
+         money = 0;
+         balance = 0;
+      }
+   
 
    public UsersData(string userName, int money, int balance)
    {

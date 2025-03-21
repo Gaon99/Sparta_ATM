@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -8,9 +9,8 @@ public class GameManager : Singleton<GameManager>
 
     // [SerializeField] private int index;  
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
         usersData = LoadUserData();
 
         if (usersData == null)
@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
             usersData = new UsersData();
         }
     }
+
     public void SaveUserData(UsersData user)
         {
             string jsonString = JsonUtility.ToJson(user);
