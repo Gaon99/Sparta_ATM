@@ -46,7 +46,10 @@ public class Register : Singleton<Register>
         }
 
         userlist.Add(newUser);
+        
         GameManager.instance.SaveUserData(userlist);
+        
+        LoginManager.instance.InitPanel();
         
     }
 

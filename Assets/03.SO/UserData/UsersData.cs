@@ -16,7 +16,6 @@ public class UsersData
       hashedPassword = "";
    }
 
-
    public UsersData(string userName, int money, int balance, string userId, string hashedPassword)
    {
       this.userName = userName;

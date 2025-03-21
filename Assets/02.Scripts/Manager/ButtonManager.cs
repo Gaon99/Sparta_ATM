@@ -20,6 +20,7 @@ public class ButtonManager : Singleton<ButtonManager>
             int index = i;
             buttons[i].onClick.AddListener(() => OnButtonClick(index));
         }
+        
     }
 
     private void OnButtonClick(int index)

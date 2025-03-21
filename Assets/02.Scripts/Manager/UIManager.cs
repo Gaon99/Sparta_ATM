@@ -48,8 +48,15 @@ public class UIManager : Singleton<UIManager>
         BM.SetButtonAction(8,OnCancelButtonClickAction);
 
         BM.SetButtonAction(9, Register.instance.RegisterUser);
+        BM.SetButtonAction(10, OnLogintButtonClickAction);
     }
 
+    private void OnLogintButtonClickAction()
+    {
+        LoginManager.instance.Login();
+        loginUI.SetActive(false);
+        popupBankUI.SetActive(true);
+    }
     private void OnSignUpButtonClickAction()
     {
         LoginManager.instance.RegisterBtnClickAction();
