@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Register : MonoBehaviour
+public class Register : Singleton<Register>
 {
     [Header("InputField")]
     [SerializeField] private TMP_InputField userId;

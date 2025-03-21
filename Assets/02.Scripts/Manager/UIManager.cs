@@ -46,7 +46,8 @@ public class UIManager : Singleton<UIManager>
 
         BM.SetButtonAction(7, OnSignUpButtonClickAction);
         BM.SetButtonAction(8,OnCancelButtonClickAction);
-//        BM.SetButtonAction(9, );
+
+        BM.SetButtonAction(9, Register.instance.RegisterUser);
     }
 
     private void OnSignUpButtonClickAction()
