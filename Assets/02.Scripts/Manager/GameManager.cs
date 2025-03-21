@@ -1,39 +1,40 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public UsersData usersData;
+    public List<UsersData> usersDataList = new List<UsersData>();
     //private UserData userData;
 
     // [SerializeField] private int index;  
 
     private void Start()
     {
-        usersData = LoadUserData();
+        usersDataList = LoadUserData();
 
-        if (usersData == null)
+        if (usersDataList == null)
         {
-            usersData = new UsersData();
+            usersDataList = new List<UsersData>();
         }
     }
 
-    public void SaveUserData(UsersData user)
+    public void SaveUserData(List<UsersData> users)
         {
-            string jsonString = JsonUtility.ToJson(user);
-            string filePath = Path.Combine(Application.persistentDataPath, "userData.json");
+            string jsonString = JsonUtility.ToJson(users);
+            string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
             File.WriteAllText(filePath, jsonString);
         }
 
-        public UsersData LoadUserData()
+        public List<UsersData> LoadUserData()
         {
-            string filePath = Path.Combine(Application.persistentDataPath, "userData.json");
+            string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
             if (File.Exists(filePath))
             {
                 string jsonString = File.ReadAllText(filePath);
-                UsersData user = JsonUtility.FromJson<UsersData>(jsonString);
-                return user;
+                List<UsersData> users = JsonUtility.FromJson<List<UsersData>>(jsonString);
+                return users;
             }
             else
             {
