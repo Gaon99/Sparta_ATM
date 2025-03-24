@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,38 +13,42 @@ public class Register : Singleton<Register>
     [SerializeField] private TMP_InputField passwordConfirm;
     
     [Header("Popup")]
-    [SerializeField] private GameObject failPopup;
     [SerializeField] private TextMeshProUGUI failText;
 
     public delegate void PopupDelegate(string message);
     public PopupDelegate ShowPopup;
-    
+
+    private void Start()
+    {
+        userPassword.characterLimit = 16;
+        passwordConfirm.characterLimit = 16;
+    }
+
     public void RegisterUser()
     {
         string userid = userId.text;
         string username = userName.text;
         string userpassword = userPassword.text;
-        string password = passwordConfirm.text;
+        string confirmpassword = passwordConfirm.text;
+        List<UsersData> userlist = GameManager.instance.usersDataList;
 
-        if (userpassword != password)
+        if (userpassword != confirmpassword)
         {
-            Popup();
+            failText.text = "비밀번호가 다릅니다";
             return;
         }
-
-        string hashedPassword = LoginManager.instance.HashedPassword(password);
+        
+        if (userlist.Exists(user => user.userId == userid))
+        {
+            failText.text = "이미 존재하는 아이디입니다";
+            return;
+        }
+        string hashedPassword = LoginManager.instance.HashedPassword(confirmpassword);
 
         UsersData newUser = new UsersData();
         newUser.userId  = userid;
         newUser.userName = username;
         newUser.hashedPassword = hashedPassword;
-
-        List<UsersData> userlist = GameManager.instance.usersDataList;
-        if (userlist.Exists(user => user.userId == userid))
-        {
-            //이미 존재하는 아이디입니다.
-            return;
-        }
 
         userlist.Add(newUser);
         

@@ -18,7 +18,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Debug.Log(Application.persistentDataPath);
         usersDataList = LoadUserData();
 
         if (usersDataList == null)
@@ -29,19 +28,19 @@ public class GameManager : Singleton<GameManager>
 
     public void SaveUserData(List<UsersData> users)
     {
-
-        UsersDataListWrapper wrapper = new UsersDataListWrapper();
-        wrapper.usersDatalist = users;
-
-        string jsonString = JsonUtility.ToJson(users);
-        string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
         try
         {
+            UsersDataListWrapper wrapper = new UsersDataListWrapper();
+            wrapper.usersDatalist = users;
+            string jsonString = JsonUtility.ToJson(wrapper, prettyPrint: true); // 가독성 개선
+            string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
             File.WriteAllText(filePath, jsonString);
+
+            Debug.Log("저장 완료: " + jsonString); // 저장된 JSON 확인
         }
         catch (Exception ex)
         {
-            Debug.LogError("Fail" + ex.Message);
+            Debug.LogError("저장 실패: " + ex.Message);
         }
     }
 
@@ -50,14 +49,27 @@ public class GameManager : Singleton<GameManager>
         string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
         if (File.Exists(filePath))
         {
-            string jsonString = File.ReadAllText(filePath);
-            UsersDataListWrapper wrapper = JsonUtility.FromJson<UsersDataListWrapper>(jsonString);
-
-            return wrapper.usersDatalist;
+            try
+            {
+                string jsonString = File.ReadAllText(filePath);
+                UsersDataListWrapper wrapper = JsonUtility.FromJson<UsersDataListWrapper>(jsonString);
+            
+                if (wrapper != null && wrapper.usersDatalist != null)
+                {
+                    return wrapper.usersDatalist;
+                }
+                else
+                {
+                    Debug.LogError("JSON 데이터 구조 불일치");
+                    return new List<UsersData>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("데이터 로드 실패: " + ex.Message);
+                return new List<UsersData>();
+            }
         }
-        else
-        {
-            return null;
-        }
+        return new List<UsersData>();
     }
 }

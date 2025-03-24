@@ -14,34 +14,35 @@ public class UIText : MonoBehaviour
    [SerializeField] private TextMeshProUGUI balancetxt;
 
    private GameManager GM;
-   private string currentUserId;
 
    private void Awake()
    {
       GM = GameManager.instance;
    }
-
-   private void Start()
-   {
-      //SetInitText();
-      UpdateUI();
-   }
-
-   private void Update()
-   {
-      UpdateUI();
-   }
-
+   
    public void UpdateUI()
    {
-      currentUserId = UIManager.instance.GetCurrentUserId();
-      if (GM.usersDataList != null && !string.IsNullOrEmpty(currentUserId))
+      if (GM == null || GM.usersDataList == null || GM.usersDataList.Count == 0)
       {
-         UsersData currentUserData = GM.usersDataList.Find(user => user.userId == currentUserId);
+         Debug.LogError("데이터가 로드되지 않았습니다!");
+         return;
+      }
 
-         userNametxt.text = currentUserData.userName + "\n";
-         cashtxt.text = currentUserData.money.ToString("N0") + "\n";
-         balancetxt.text = "Balance : " + currentUserData.balance.ToString("N0") + "\n";
+      string currentUserId = UIManager.instance.currentUserId;
+      if (string.IsNullOrEmpty(currentUserId))
+      {
+         Debug.LogError("currentUserId가 설정되지 않았습니다!");
+         return;
+      }
+
+      UsersData currentUser = GM.usersDataList.Find(user => 
+         user.userId.Equals(currentUserId, StringComparison.OrdinalIgnoreCase));
+
+      if (currentUser != null)
+      {
+         userNametxt.text = currentUser.userName;
+         cashtxt.text = currentUser.money.ToString("N0");
+         balancetxt.text = $"balance : {currentUser.balance:N0}";
       }
    }
 }

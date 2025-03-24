@@ -18,18 +18,18 @@ public class UIManager : Singleton<UIManager>
     public GameObject popupBankUI;
 
     private GameManager GM;
-    [SerializeField] private UIText uiText;
+    public UIText uiText;
 
-    private string currentUserId;
+    public string currentUserId;
 
     private void Start()
     {
         BM = ButtonManager.instance;
         GM = GameManager.instance;
         atmPanel.SetActive(false);
+        popupBankUI.SetActive(false);
 
         ButtonAction();
-        uiText.UpdateUI();
     }
 
     private void ButtonAction()
@@ -48,14 +48,12 @@ public class UIManager : Singleton<UIManager>
         BM.SetButtonAction(8,OnCancelButtonClickAction);
 
         BM.SetButtonAction(9, Register.instance.RegisterUser);
-        BM.SetButtonAction(10, OnLogintButtonClickAction);
+        BM.SetButtonAction(10, OnLoginButtonClickAction);
     }
 
-    private void OnLogintButtonClickAction()
+    private void OnLoginButtonClickAction()
     {
         LoginManager.instance.Login();
-        loginUI.SetActive(false);
-        popupBankUI.SetActive(true);
     }
     private void OnSignUpButtonClickAction()
     {
@@ -123,6 +121,7 @@ public class UIManager : Singleton<UIManager>
                     GM.SaveUserData(GM.usersDataList);
                 }
             }
+            GM.SaveUserData(GM.usersDataList);
             uiText.UpdateUI();
         }
     }
@@ -130,11 +129,14 @@ public class UIManager : Singleton<UIManager>
     public void SetCurrentUserId(string userId)
     {
         currentUserId = userId;
+        Debug.Log("SetCurrentUserId: " + currentUserId);
     }
 
-    public string GetCurrentUserId()
+    public void LoginUI()
     {
-        return currentUserId;
+        loginUI.SetActive(false);
+        popupBankUI.SetActive(true); 
+        uiText.UpdateUI();
     }
 }
 /*

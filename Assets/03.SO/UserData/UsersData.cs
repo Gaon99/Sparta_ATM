@@ -2,7 +2,7 @@
 public class UsersData
 {
    public string userName;
-   public int money;
+   public int money; //[HideinInspector]
    public int balance;
    public string hashedPassword;
    public string userId;
@@ -16,11 +16,12 @@ public class UsersData
       hashedPassword = "";
    }
 
-   public UsersData(string userName, int money, int balance, string userId, string hashedPassword)
+   public UsersData(string userName, string userId, string hashedPassword)
    {
+      this.userId = userId;
       this.userName = userName;
-      this.money = money;
-      this.balance = balance;
       this.hashedPassword = hashedPassword;
+      money = 100000; // 초기 자금 설정 (예시)
+      balance = 0;
    }
 }
