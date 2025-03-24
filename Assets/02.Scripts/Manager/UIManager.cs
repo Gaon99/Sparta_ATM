@@ -5,18 +5,21 @@ using UnityEngine.UIElements;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("Setting")]
+    [SerializeField] private GameObject transferPanel;
     [SerializeField] private GameObject selectPanel;
     [SerializeField] private GameObject atmPanel;
     [SerializeField] private TextMeshProUGUI header;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private UserData userData;
 
-    private ButtonManager BM;
     private bool isDeposit = false;
     
+    [Header("System")]
     public GameObject loginUI;
     public GameObject popupBankUI;
 
+    private ButtonManager BM;
     private GameManager GM;
     public UIText uiText;
 
@@ -26,9 +29,7 @@ public class UIManager : Singleton<UIManager>
     {
         BM = ButtonManager.instance;
         GM = GameManager.instance;
-        atmPanel.SetActive(false);
-        popupBankUI.SetActive(false);
-
+        InitPanel();
         ButtonAction();
     }
 
@@ -49,8 +50,32 @@ public class UIManager : Singleton<UIManager>
 
         BM.SetButtonAction(9, Register.instance.RegisterUser);
         BM.SetButtonAction(10, OnLoginButtonClickAction);
+        BM.SetButtonAction(11, PopupCloseButtonClickAction);
+        BM.SetButtonAction(12, OnBackButtonClickAction);
+        BM.SetButtonAction(13,OnTransferPanelButtonClickAction);
+        BM.SetButtonAction(14, TransferManager.instance.Transfer);
     }
 
+    private void InitPanel()
+    {
+        transferPanel.SetActive(false);
+        atmPanel.SetActive(false);
+        popupBankUI.SetActive(false);
+    }
+    private void OnTransferPanelButtonClickAction()
+    {
+     transferPanel.SetActive(true);
+     selectPanel.SetActive(false);
+    }
+    private void OnBackButtonClickAction()
+    {
+        transferPanel.SetActive(false);
+        selectPanel.SetActive(true);
+    }
+    private void PopupCloseButtonClickAction()
+    {
+        TransferManager.instance.PopupPanel.SetActive(false);
+    }
     private void OnLoginButtonClickAction()
     {
         LoginManager.instance.Login();
@@ -96,7 +121,6 @@ public class UIManager : Singleton<UIManager>
         selectPanel.SetActive(true);
     }
 
-
     public void OnMoneyButtonClickAction(int money)
     {
         UsersData currentUser = GM.usersDataList.Find(user => user.userId == currentUserId);
@@ -129,7 +153,6 @@ public class UIManager : Singleton<UIManager>
     public void SetCurrentUserId(string userId)
     {
         currentUserId = userId;
-        Debug.Log("SetCurrentUserId: " + currentUserId);
     }
 
     public void LoginUI()

@@ -12,7 +12,7 @@ public class LoginManager : Singleton<LoginManager>
 {
     [Header("InputField")] 
     [SerializeField] private TMP_InputField idInputField;
-    [SerializeField] private PassWordFilter pwInputField;
+    [SerializeField] private TMP_InputField pwInputField;
 
     [Header("Panel")] [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject registerPanel;
@@ -47,7 +47,6 @@ public class LoginManager : Singleton<LoginManager>
             return;
         }
 
-        // 1. 사용자 존재 여부 확인
         UsersData usersData = GameManager.instance.usersDataList.Find(user =>
             user.userId.Equals(username, StringComparison.OrdinalIgnoreCase));
 
@@ -57,19 +56,15 @@ public class LoginManager : Singleton<LoginManager>
             return;
         }
 
-        // 2. 비밀번호 검증
         if (!VerifyPassword(password, usersData.hashedPassword))
         {
             statusText.text = "비밀번호가 틀렸습니다.";
             return;
         }
-
-        // 3. 로그인 성공 처리 (여기서 한 번만 호출)
+        
         UIManager.instance.SetCurrentUserId(usersData.userId);
-        Debug.Log($"로그인 성공: ID={usersData.userId}, Name={usersData.userName}");
         UIManager.instance.LoginUI();
         statusText.text = "로그인 성공!";
-        
     }
 
     
