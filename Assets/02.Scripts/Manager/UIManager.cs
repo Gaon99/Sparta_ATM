@@ -36,7 +36,7 @@ public class UIManager : Singleton<UIManager>
     {
         BM.SetButtonAction(0, OnDepositButtonClickAction);
         BM.SetButtonAction(1, OnWithdrawButtonClickAction);
-        BM.SetButtonAction(2, OnGobackAction);
+        BM.SetButtonAction(2, OnGobackButtonClickAction);
 
         BM.SetButtonAction(3, () => OnMoneyButtonClickAction(10000));
         BM.SetButtonAction(4, () => OnMoneyButtonClickAction(30000));
@@ -114,7 +114,7 @@ public class UIManager : Singleton<UIManager>
         isDeposit = false;
     }
     
-    private void OnGobackAction()
+    private void OnGobackButtonClickAction()
     {
         atmPanel.SetActive(false);
         selectPanel.SetActive(true);

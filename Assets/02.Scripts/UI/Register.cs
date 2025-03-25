@@ -13,10 +13,7 @@ public class Register : Singleton<Register>
     
     [Header("Popup")]
     [SerializeField] private TextMeshProUGUI failText;
-
-    public delegate void PopupDelegate(string message);
-    public PopupDelegate ShowPopup;
-
+    
     private void Start()
     {
         userPassword.characterLimit = 16;
@@ -60,10 +57,5 @@ public class Register : Singleton<Register>
         
         LoginManager.instance.InitPanel();
         
-    }
-
-    public void Popup()
-    {
-        //델리게이트 사용해서 제작
     }
 }
