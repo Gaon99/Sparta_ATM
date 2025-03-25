@@ -32,6 +32,11 @@ public class Register : Singleton<Register>
         string confirmpassword = passwordConfirm.text;
         List<UsersData> userlist = GameManager.instance.usersDataList;
 
+        if (userid == string.Empty || username == string.Empty || userpassword == String.Empty || confirmpassword == string.Empty)
+        {
+            PopupManager.instance.ShowPopup(PopupType.EmptyRegiInput);
+            return;
+        }
         if (userpassword != confirmpassword)
         {
             failText.text = "비밀번호가 다릅니다";

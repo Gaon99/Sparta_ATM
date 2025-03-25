@@ -50,10 +50,10 @@ public class UIManager : Singleton<UIManager>
 
         BM.SetButtonAction(9, Register.instance.RegisterUser);
         BM.SetButtonAction(10, OnLoginButtonClickAction);
-        BM.SetButtonAction(11, PopupCloseButtonClickAction);
+        BM.SetButtonAction(11, PopupManager.instance.ClosePopup);
         BM.SetButtonAction(12, OnBackButtonClickAction);
         BM.SetButtonAction(13,OnTransferPanelButtonClickAction);
-        BM.SetButtonAction(14, TransferManager.instance.Transfer);
+        BM.SetButtonAction(14, TransferManager.instance.Transfer); 
     }
 
     private void InitPanel()
@@ -62,24 +62,24 @@ public class UIManager : Singleton<UIManager>
         atmPanel.SetActive(false);
         popupBankUI.SetActive(false);
     }
+    
     private void OnTransferPanelButtonClickAction()
     {
      transferPanel.SetActive(true);
      selectPanel.SetActive(false);
     }
+    
     private void OnBackButtonClickAction()
     {
         transferPanel.SetActive(false);
         selectPanel.SetActive(true);
     }
-    private void PopupCloseButtonClickAction()
-    {
-        TransferManager.instance.PopupPanel.SetActive(false);
-    }
+    
     private void OnLoginButtonClickAction()
     {
         LoginManager.instance.Login();
     }
+    
     private void OnSignUpButtonClickAction()
     {
         LoginManager.instance.RegisterBtnClickAction();
@@ -162,21 +162,4 @@ public class UIManager : Singleton<UIManager>
         uiText.UpdateUI();
     }
 }
-/*
-public void OnMoneyButtonClickAction(int money, string userId, TransactionType transactionType)
-{
-    var user = userData.UserInfo.FirstOrDefault(u => u.userId == userId);
-
-    if (transactionType == TransactionType.Deposit)
-    {
-        user.cash -= money;
-        user.balance += money;
-    }
-    else if (transactionType == TransactionType.Withdraw)
-    {
-        user.cash += money;
-        user.balance -= money;
-    }
-}
-*/
 

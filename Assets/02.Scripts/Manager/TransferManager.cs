@@ -10,11 +10,11 @@ public class TransferManager : Singleton<TransferManager>
    [SerializeField] private TMP_InputField receiverField;
    [SerializeField] private TMP_InputField amountField;
 
-   public GameObject PopupPanel;
+   private PopupManager PM;
 
    private void Start()
    {
-      PopupPanel.SetActive(false);
+      PM = PopupManager.instance;
    }
 
    public void Transfer()
@@ -26,7 +26,7 @@ public class TransferManager : Singleton<TransferManager>
       
       if(string.IsNullOrEmpty(receiverId)|| !int.TryParse(amountField.text, out amount) || amount <= 0)
       {
-         PopupPanel.SetActive(true);
+         PM.ShowPopup(PopupType.EmptyTransInput);
          return;
       }
       
@@ -35,21 +35,19 @@ public class TransferManager : Singleton<TransferManager>
 
       if (sender == null || receiver == null)
       {
-         PopupPanel.SetActive(true); // 유저 찾지 못함
+         PM.ShowPopup(PopupType.InvalidUserId);
          return;
       }
 
       if (sender.balance < amount)
       {
-         PopupPanel.SetActive(true);//잔액 부족
+         PM.ShowPopup(PopupType.InsufficientBalance);
          return;
       }
       
       sender.balance -= amount;
       receiver.balance += amount;
       GameManager.instance.SaveUserData(GameManager.instance.usersDataList);
-      
-      PopupPanel.SetActive(true);
       UIManager.instance.uiText.UpdateUI();
    }
    
