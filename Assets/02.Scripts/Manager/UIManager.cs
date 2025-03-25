@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -13,7 +12,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private UserData userData;
 
-    private bool isDeposit = false;
+    private bool isDeposit;
     
     [Header("System")]
     public GameObject loginUI;
@@ -114,14 +113,14 @@ public class UIManager : Singleton<UIManager>
         header.text = "출금";
         isDeposit = false;
     }
-
-    public void OnGobackAction()
+    
+    private void OnGobackAction()
     {
         atmPanel.SetActive(false);
         selectPanel.SetActive(true);
     }
 
-    public void OnMoneyButtonClickAction(int money)
+    private void OnMoneyButtonClickAction(int money)
     {
         UsersData currentUser = GM.usersDataList.Find(user => user.userId == currentUserId);
 

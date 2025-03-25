@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TransferManager : Singleton<TransferManager>
 {
@@ -21,10 +17,11 @@ public class TransferManager : Singleton<TransferManager>
    {
       string senderId = UIManager.instance.currentUserId;
       string receiverId = receiverField.text;
-
+      string receiverName = receiverField.text;
+      
       int amount = 0;
       
-      if(string.IsNullOrEmpty(receiverId)|| !int.TryParse(amountField.text, out amount) || amount <= 0)
+      if(string.IsNullOrEmpty(receiverId)||string.IsNullOrEmpty(receiverName) || !int.TryParse(amountField.text, out amount) || amount <= 0)
       {
          PM.ShowPopup(PopupType.EmptyTransInput);
          return;

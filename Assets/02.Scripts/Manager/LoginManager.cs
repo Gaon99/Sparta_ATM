@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Security.Cryptography;
 using System.Text;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class LoginManager : Singleton<LoginManager> 
 {
@@ -69,7 +65,7 @@ public class LoginManager : Singleton<LoginManager>
 
     
 
-    public bool VerifyPassword(string password, string hashedPassword)
+    private bool VerifyPassword(string password, string hashedPassword)
     {
         string hashedInputPassword = HashedPassword(password);
         return hashedInputPassword == hashedPassword;
