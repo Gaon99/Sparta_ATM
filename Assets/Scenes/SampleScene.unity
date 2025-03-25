@@ -1846,8 +1846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddefed2f4cc3543429f0394c3741f764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receiverField: {fileID: 0}
-  amountField: {fileID: 0}
+  receiverField: {fileID: 294875567}
+  amountField: {fileID: 1873795651}
 --- !u!1 &253724146
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,7 +5550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC1A1\uAE08 \uB300"
+  m_text: "\uC1A1\uAE08 \uB300\uC0C1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 24c8f863f04274fcf9f27a13a2a8a0ce, type: 2}
   m_sharedMaterial: {fileID: 951081247595729821, guid: 24c8f863f04274fcf9f27a13a2a8a0ce, type: 2}
@@ -7337,12 +7337,12 @@ Transform:
   m_GameObject: {fileID: 1036895025}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.817993, y: -1.9, z: 0}
-  m_LocalScale: {x: 0.55625, y: 0.55625, z: 0.55625}
+  m_LocalPosition: {x: 15.852572, y: -3.4157195, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 834013767}
-  m_Father: {fileID: 1871762427}
+  m_Father: {fileID: 2003486493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043186097
 GameObject:
@@ -12005,7 +12005,6 @@ Transform:
   m_Children:
   - {fileID: 606176367}
   - {fileID: 1159276682}
-  - {fileID: 1036895026}
   m_Father: {fileID: 499447218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873795646
@@ -12656,6 +12655,7 @@ RectTransform:
   m_Children:
   - {fileID: 1740153141}
   - {fileID: 499447218}
+  - {fileID: 1036895026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,20 +17,33 @@ public class TransferManager : Singleton<TransferManager>
    public void Transfer()
    {
       string senderId = UIManager.instance.currentUserId;
-      string receiverId = receiverField.text;
-      string receiverName = receiverField.text;
+      string receiverInput = receiverField.text.Trim();
+
+      int amount;
       
-      int amount = 0;
-      
-      if(string.IsNullOrEmpty(receiverId)||string.IsNullOrEmpty(receiverName) || !int.TryParse(amountField.text, out amount) || amount <= 0)
+      if(string.IsNullOrEmpty(receiverInput) || !int.TryParse(amountField.text, out amount) || amount <= 0)
       {
          PM.ShowPopup(PopupType.EmptyTransInput);
          return;
       }
       
       UsersData sender = GameManager.instance.usersDataList.Find(user => user.userId == senderId);
-      UsersData receiver = GameManager.instance.usersDataList.Find(user => user.userId == receiverId);
-
+      UsersData receiver;
+      
+      receiver = GameManager.instance.usersDataList.Find(user => user.userId == receiverInput);
+      
+      if (receiver == null)
+      {
+         receiver = GameManager.instance.usersDataList.Find(user => 
+            user.userName.Equals(receiverInput, StringComparison.OrdinalIgnoreCase));
+      }
+      
+      if (sender == receiver) 
+      { 
+         PM.ShowPopup(PopupType.SelfTransfer);
+         return;
+      }
+      
       if (sender == null || receiver == null)
       {
          PM.ShowPopup(PopupType.InvalidUserId);
@@ -46,6 +60,9 @@ public class TransferManager : Singleton<TransferManager>
       receiver.balance += amount;
       GameManager.instance.SaveUserData(GameManager.instance.usersDataList);
       UIManager.instance.uiText.UpdateUI();
+
+      receiverField.text = "";
+      amountField.text = "";
    }
    
 }

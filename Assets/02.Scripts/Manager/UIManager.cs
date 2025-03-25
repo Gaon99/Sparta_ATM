@@ -134,6 +134,12 @@ public class UIManager : Singleton<UIManager>
                     currentUser.balance += money;
                     GM.SaveUserData(GM.usersDataList);
                 }
+                else
+                {    Debug.Log("Insufficient Balance!");
+
+                    PopupManager.instance.ShowPopup(PopupType.InsufficientBalance);
+                    return;
+                }
             }
             else
             {
@@ -142,6 +148,12 @@ public class UIManager : Singleton<UIManager>
                     currentUser.money += money;
                     currentUser.balance -= money;
                     GM.SaveUserData(GM.usersDataList);
+                }
+                else
+                {    Debug.Log("Insufficient Balance!");
+
+                    PopupManager.instance.ShowPopup(PopupType.InsufficientBalance);
+                    return;
                 }
             }
             GM.SaveUserData(GM.usersDataList);
