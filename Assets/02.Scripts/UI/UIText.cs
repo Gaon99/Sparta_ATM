@@ -20,14 +20,12 @@ public class UIText : MonoBehaviour
    {
       if (GM == null || GM.usersDataList == null || GM.usersDataList.Count == 0)
       {
-         Debug.LogError("데이터가 로드되지 않았습니다!");
          return;
       }
 
       string currentUserId = UIManager.instance.currentUserId;
       if (string.IsNullOrEmpty(currentUserId))
       {
-         Debug.LogError("currentUserId가 설정되지 않았습니다!");
          return;
       }
 
