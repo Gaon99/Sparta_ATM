@@ -1,43 +1,44 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIText : MonoBehaviour
 {
-   [SerializeField] private UserData userData;
-   [SerializeField] private TextMeshProUGUI UserName;
-   [SerializeField] private TextMeshProUGUI cash;
-   [SerializeField] private TextMeshProUGUI balance;
-   private string userNames;
-   private string cashValues;
-   private string balanceValues;
+   //[SerializeField] private UserData userData;
+   [SerializeField] private TextMeshProUGUI userNametxt;
+   [SerializeField] private TextMeshProUGUI cashtxt;
+   [SerializeField] private TextMeshProUGUI balancetxt;
 
    private GameManager GM;
-   private void Start()
+
+   private void Awake()
    {
       GM = GameManager.instance;
-      SetInitText();
-      UpdateUI(GM.index);
    }
-
-   private void SetInitText()
+   
+   public void UpdateUI()
    {
-      userNames = String.Empty;
-      cashValues = String.Empty;
-      balanceValues = String.Empty;
-   }
-
-   private void UpdateUI(int index)
-   {
-      if (index != 0)
+      if (GM == null || GM.usersDataList == null || GM.usersDataList.Count == 0)
       {
-         UserBase user = userData.UserInfo[index-1];
-         UserName.text = user.userName + "\n";
-         cash.text = user.cash.ToString("N0") + "\n";
-         balance.text = user.balance.ToString("N0") + "\n";
+         Debug.LogError("데이터가 로드되지 않았습니다!");
+         return;
+      }
+
+      string currentUserId = UIManager.instance.currentUserId;
+      if (string.IsNullOrEmpty(currentUserId))
+      {
+         Debug.LogError("currentUserId가 설정되지 않았습니다!");
+         return;
+      }
+
+      UsersData currentUser = GM.usersDataList.Find(user => 
+         user.userId.Equals(currentUserId, StringComparison.OrdinalIgnoreCase));
+
+      if (currentUser != null)
+      {
+         userNametxt.text = currentUser.userName;
+         cashtxt.text = currentUser.money.ToString("N0");
+         balancetxt.text = $"balance : {currentUser.balance:N0}";
       }
    }
 }
