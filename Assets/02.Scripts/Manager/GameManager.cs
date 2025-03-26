@@ -27,20 +27,13 @@ public class GameManager : Singleton<GameManager>
 
     public void SaveUserData(List<UsersData> users)
     {
-        try
-        {
-            UsersDataListWrapper wrapper = new UsersDataListWrapper();
-            wrapper.usersDatalist = users;
-            string jsonString = JsonUtility.ToJson(wrapper, prettyPrint: true); // 가독성 개선
-            string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
-            File.WriteAllText(filePath, jsonString);
 
-            Debug.Log("저장 완료: " + jsonString); // 저장된 JSON 확인
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("저장 실패: " + ex.Message);
-        }
+        UsersDataListWrapper wrapper = new UsersDataListWrapper();
+        wrapper.usersDatalist = users;
+        string jsonString = JsonUtility.ToJson(wrapper, prettyPrint: true);
+        string filePath = Path.Combine(Application.persistentDataPath, "usersData.json");
+        File.WriteAllText(filePath, jsonString);
+
     }
 
     public List<UsersData> LoadUserData()
@@ -52,20 +45,15 @@ public class GameManager : Singleton<GameManager>
             {
                 string jsonString = File.ReadAllText(filePath);
                 UsersDataListWrapper wrapper = JsonUtility.FromJson<UsersDataListWrapper>(jsonString);
-            
+
                 if (wrapper != null && wrapper.usersDatalist != null)
                 {
                     return wrapper.usersDatalist;
                 }
-                else
-                {
-                    Debug.LogError("JSON 데이터 구조 불일치");
-                    return new List<UsersData>();
-                }
+                return new List<UsersData>();
             }
             catch (Exception ex)
             {
-                Debug.LogError("데이터 로드 실패: " + ex.Message);
                 return new List<UsersData>();
             }
         }
